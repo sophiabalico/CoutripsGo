@@ -2,6 +2,8 @@ import express from "express";
 import { config } from "dotenv";
 import cors from "cors"; // Importa o middleware CORS
 
+import routes from "./routes/index.routes.js"
+
 config(); // Carrega variáveis de ambiente do arquivo .env
 const port = process.env.PORT || 5000;
 
@@ -10,6 +12,8 @@ const app = express();
 app.use(cors()); // Habilita CORS para todas as rotas
 
 app.use(express.json()); // Parse de JSON
+
+app.use("/", routes);
 
 // Rota base para verificar se o servidor está rodando
 app.get("/", (req, res) => {
