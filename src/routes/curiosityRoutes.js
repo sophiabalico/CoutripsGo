@@ -14,7 +14,7 @@ curiosityRouter.get("/:id", CuriosityController.getCuriosityById);
 curiosityRouter.post("/", CuriosityController.createCuriosity);
 
 // PUT /curiosidades/:id - Atualizar uma Curiosidade
-curiosityRouter.put("/:id", CuriosityController.updateCuriosity);
+curiosityRouter.put("/:id", CuriosityController.updatedCuriosity);
 
 // DELETE /curiosidades/:id - Remover uma Curiosidade
 curiosityRouter.delete("/:id", CuriosityController.deleteCuriosity);

@@ -4,11 +4,13 @@ class CuriosityController {
   // GET /curiosidades
   async getAllCuriosities(req, res) {
     try {
-      const curiosidades = await CuriosityModel.findAll();
+      const curiosidades = await CuriosityModel.findAll(
+       
+      );
       res.json(curiosidades);
     } catch (error) {
-      console.error("Erro ao buscar as curiosidades:", error);
-      res.status(500).json({ error: "Erro ao buscar as curiosidades" });
+      console.error("Erro ao buscar curiosidades:", error);
+      res.status(500).json({ error: "Erro ao buscar curiosidades" });
     }
   }
 
@@ -37,17 +39,17 @@ class CuriosityController {
       const {
         title,
         description,
-        countryId,
+        countryId
       } = req.body;
 
       // Verifica se todos os campos da curiosidade foram fornecidos
       if (
         !title ||
-        !collectionId
+        !countryId
       ) {
         return res.status(400).json({
           error:
-            "Os campos título e id do país são obrigatórios",
+            "Os campos título e o id do país são obrigatórios",
         });
       }
 
@@ -67,19 +69,19 @@ class CuriosityController {
         newCuriosity,
       });
     } catch (error) {
-      console.error("Erro ao criar Curiosidade:", error);
-      res.status(500).json({ error: "Erro ao criar Curiosidade" });
+      console.error("Erro ao criar curiosidade:", error);
+      res.status(500).json({ error: "Erro ao criar curiosidade" });
     }
   }
 
-  // PUT /curiosidades/:id
-  async updateCuriosity(req, res) {
+  // PUT /curiosidade/:id
+  async updatedCuriosity(req, res) {
     try {
       const { id } = req.params;
       const {
         title,
         description,
-        countryId,
+        countryId
       } = req.body;
 
       // Atualizar a Curiosidade
