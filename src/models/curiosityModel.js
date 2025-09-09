@@ -1,5 +1,4 @@
-import { PrismaClient } from '../generated/prisma/client.js'
-const prisma = new PrismaClient();
+import prisma from "../../prisma/prisma.js"
 
 class CuriosityModel {
   // Obter todas as curiosidades

@@ -1,5 +1,4 @@
-import { PrismaClient } from '../generated/prisma/client.js'
-const prisma = new PrismaClient();
+import prisma from "../../prisma/prisma.js"
 
 class TouristSpotModel {
   // Obter todas os pontos turísticos
@@ -17,7 +16,7 @@ class TouristSpotModel {
 
   // Obter um ponto turístico pelo ID
   async findById(id) {
-    const turismo = await prisma.tourist.findUnique({
+    const turismo = await prisma.touristSpot.findUnique({
       where: {
         id: Number(id),
       },
@@ -36,7 +35,7 @@ class TouristSpotModel {
     description,
     countryId
   ) {
-    const novoTurismo = await prisma.tourist.create({
+    const novoTurismo = await prisma.touristSpot.create({
       data: {
         imageUrl,
         title,
@@ -63,7 +62,7 @@ class TouristSpotModel {
     }
 
     // Atualize um ponto turístico existente com os novos dados
-    const turismoAtualizado = await prisma.tourist.update({
+    const turismoAtualizado = await prisma.touristSpot.update({
       where: {
         id: Number(id),
       },
@@ -86,7 +85,7 @@ class TouristSpotModel {
       return null;
     }
 
-    await prisma.tourist.delete({
+    await prisma.touristSpot.delete({
       where: {
         id: Number(id),
       },
