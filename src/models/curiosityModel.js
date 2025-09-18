@@ -4,9 +4,6 @@ class CuriosityModel {
   // Obter todas as curiosidades
   async findAll() {
     const curiosidades = await prisma.curiosity.findMany({
-      orderBy: {
-        title: "asc",
-      },
       include: {
         country: true,
       },

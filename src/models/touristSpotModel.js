@@ -4,9 +4,6 @@ class TouristSpotModel {
   // Obter todas os pontos turísticos
   async findAll() {
     const turismos = await prisma.touristSpot.findMany({
-      orderBy: {
-        title: "asc",
-      },
       include: {
         country: true,
       },

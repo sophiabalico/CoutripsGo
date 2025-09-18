@@ -4,9 +4,6 @@ class CountryModel {
   // Obter todos os países
   async findAll() {
     const paises = await prisma.country.findMany({
-      orderBy: {
-        name: "asc",
-      },
       include: {
         curiosities: true,
         tourists: true
@@ -34,10 +31,11 @@ class CountryModel {
   }
 
   // Criar um novo país
-  async create(name, capital, language, coin, cost, flag, location) {
+  async create(name, imageUrl, capital, language, coin, cost, flag, location) {
     const novoPais = await prisma.country.create({
       data: {
         name,
+        imageUrl,
         capital,
         language,
         coin,
@@ -51,7 +49,7 @@ class CountryModel {
   }
 
   // Atualizar um país
-  async update(id, name, capital, language, coin, cost, flag, location) {
+  async update(id, name, imageUrl, capital, language, coin, cost, flag, location) {
     const pais = await this.findById(id);
 
     if (!pais) {
@@ -61,6 +59,9 @@ class CountryModel {
     // Atualize o país existente com os novos dados
     if (name !== undefined) {
       name = name;
+    }
+    if (imageUrl !== undefined) {
+      imageUrl = imageUrl;
     }
     if (capital !== undefined) {
       capital = capital;
@@ -87,6 +88,7 @@ class CountryModel {
       },
       data: {
         name,
+        imageUrl,
         capital,
         language,
         coin,

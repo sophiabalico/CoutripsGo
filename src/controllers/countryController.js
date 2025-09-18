@@ -36,6 +36,7 @@ class CountryController {
       // Captura dos dados do corpo da requisição (frontend)
       const {
         name,
+        imageUrl,
         capital,
         language,
         coin,
@@ -60,6 +61,7 @@ class CountryController {
       // Criar o novo país
       const newCountry = await CountryModel.create(
         name,
+        imageUrl,
         capital,
         language,
         coin,
@@ -88,6 +90,7 @@ class CountryController {
       const { id } = req.params;
       const {
         name,
+        imageUrl,
         capital,
         language,
         coin,
@@ -100,6 +103,7 @@ class CountryController {
       const updatedCountry = await CountryModel.update(
         id,
         name,
+        imageUrl,
         capital,
         language,
         coin,

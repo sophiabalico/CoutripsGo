@@ -16,6 +16,7 @@ datasource db {
 model Country {
   id       Int    @id @default(autoincrement())
   name     String
+  imageUrl String?
   capital  String
   language String
   coin     String?
